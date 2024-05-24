@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:internal_news/pages/login/login_page.dart';
-import 'package:internal_news/theme/AppTheme.dart';
+import 'package:internal_news/theme/app_theme.dart';
 
 import 'pages/news/news_page.dart';
 
@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: AppTheme.internalNewsTheme,
         routes: {

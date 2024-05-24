@@ -12,14 +12,14 @@ class InternalTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       style: const TextStyle(
-        fontFamily: 'Poppins',
-        fontWeight: FontWeight.w500,
+        fontFamily: 'Urbanist',
+        fontWeight: FontWeight.w600,
       ),
       decoration: InputDecoration(
         hintStyle: TextStyle(
           color: Colors.grey[400],
-          fontFamily: 'Poppins',
-          fontWeight: FontWeight.w500,
+          fontFamily: 'Urbanist',
+          fontWeight: FontWeight.w600,
         ),
         prefixIcon: Icon(prefixIcon),
         suffixIcon: Icon(suffixIcon),

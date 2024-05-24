@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:internal_news/widgets/internal_heading_text.dart';
+import 'package:internal_news/widgets/internal_title_text.dart';
+
+import '../../widgets/internal_elevated_button.dart';
+import '../../widgets/intertal_subtitle_text.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -6,6 +11,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -16,44 +22,25 @@ class LoginPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Noticias Internas 👋',
-                style: TextStyle(
-                  fontFamily: 'Playfair',
-                  fontWeight: FontWeight.w700,
-                  color: Colors.black,
-                  fontSize: 32,
-                ),
-              ),
+              const InternalHeadingText(text: 'Welcome 👋'),
               const SizedBox(height: 16.0),
-              Text(
-                'Please enter your email & password to sign in',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w300,
-                  color: Colors.grey[600],
-                ),
+              InternalSubTitleText(
+                text: 'Please enter your email & password to sign in',
+                color: Colors.grey[600],
               ),
               const SizedBox(height: 32.0),
-              const Text(
-                'Email',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black,
-                ),
-              ),
+              const InternalTitleText(text: 'Email'),
               const SizedBox(height: 8.0),
               TextFormField(
                 style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Urbanist',
+                  fontWeight: FontWeight.w600,
                 ),
                 decoration: InputDecoration(
                   hintStyle: TextStyle(
                     color: Colors.grey[400],
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Urbanist',
+                    fontWeight: FontWeight.w400,
                   ),
                   prefixIcon: Icon(
                     Icons.email,
@@ -66,24 +53,18 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16.0),
-              const Text(
-                'Password',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black,
-                ),
-              ),
+              const InternalTitleText(text: 'Password'),
               const SizedBox(height: 8.0),
               TextFormField(
+                obscureText: true,
                 style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w300,
+                  fontFamily: 'Urbanist',
+                  fontWeight: FontWeight.w600,
                 ),
                 decoration: InputDecoration(
                   hintStyle: TextStyle(
                     color: Colors.grey[400],
-                    fontFamily: 'Poppins',
+                    fontFamily: 'Urbanist',
                     fontWeight: FontWeight.w500,
                   ),
                   prefixIcon: Icon(
@@ -104,45 +85,29 @@ class LoginPage extends StatelessWidget {
               Row(
                 children: [
                   Checkbox(value: false, onChanged: (bool? value) {}),
-                  const Text(
-                    'Remember me',
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
-                  ),
+                  const InternalTitleText(text: 'Remember me'),
                   const Spacer(),
-                  const Text(
-                    'Forgot Password?',
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
+                  const InternalTitleText(
+                    text: 'Forgot Password?',
+                    color: Color(0xFF1b998e),
+                    fontWeight: FontWeight.w700,
                   ),
                 ],
               ),
               const SizedBox(height: 32.0),
               const Divider(),
               const SizedBox(height: 32.0),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'Don\'t have an account?',
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w300,
-                    ),
+                  InternalSubTitleText(
+                    text: 'Don\'t have an account?',
                   ),
-                  const SizedBox(width: 8.0),
-                  Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
-                    ),
+                  SizedBox(width: 8.0),
+                  InternalTitleText(
+                    text: 'Sign Up',
+                    color: Color(0xFF1b998e),
+                    fontWeight: FontWeight.w700,
                   ),
                 ],
               ),
@@ -153,27 +118,12 @@ class LoginPage extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 24.0),
-        child: SizedBox(
-          width: double.infinity,
-          height: 48.0,
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/news');
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.deepPurple,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16.0),
-              ),
-              elevation: 0,
-            ),
-            child: const Text('Sign In',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
-                )),
-          ),
+        child: InternalElevatedButton(
+          buttonText: 'Sign In',
+          onPressed: () {
+            print('Sign In button pressed');
+            Navigator.pushNamed(context, '/news');
+          },
         ),
       ),
     );
