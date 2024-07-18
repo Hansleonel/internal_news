@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:internal_news/theme/app_colors.dart';
+import 'package:internal_news/widgets/internal_user_app_bar.dart';
 import 'package:internal_news/widgets/new_trending_card.dart';
 
 class NewsPage extends StatelessWidget {
@@ -9,7 +10,15 @@ class NewsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
-      appBar: const NewsUserAppBar(),
+      appBar: InternalUserAppBar(
+        userName: 'Andrew Ainsley',
+        onNotificationIconTap: () {
+          print('notification');
+        },
+        welcomeMessage: 'Welcome back 👋',
+        userAvatarUrlImage:
+            'https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg',
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,90 +45,6 @@ class NewsPage extends StatelessWidget {
       ),
     );
   }
-}
-
-class NewsUserAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const NewsUserAppBar({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: Colors.white,
-      elevation: 0,
-      flexibleSpace: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Row(
-                children: [
-                  CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      'https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg', // Replace with actual image URL
-                    ),
-                    radius: 24,
-                  ),
-                  SizedBox(width: 12),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Welcome back 👋',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: AppColors.greyColor,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                      Text(
-                        'Andrew Ainsley',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Playfair',
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      print('notification');
-                    },
-                    child: Icon(
-                      Icons.notifications_on_outlined,
-                      size: 28,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Positioned(
-                    right: 0,
-                    child: Container(
-                      width: 8,
-                      height: 8,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.red,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(100.0);
 }
 
 class TrendingSection extends StatelessWidget {
