@@ -5,7 +5,7 @@ class InternalUserAppBar extends StatelessWidget
     implements PreferredSizeWidget {
   final String userName;
   final String userAvatarUrlImage;
-  final VoidCallback onNotificationIconTap;
+  final VoidCallback? onNotificationIconTap;
   final String welcomeMessage;
   const InternalUserAppBar(
       {Key? key,
