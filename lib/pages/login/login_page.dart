@@ -122,7 +122,7 @@ class LoginPage extends StatelessWidget {
           buttonText: 'Sign In',
           onPressed: () {
             print('Sign In button pressed');
-            Navigator.pushNamed(context, '/news');
+            Navigator.pushReplacementNamed(context, '/news');
           },
         ),
       ),
